@@ -7,11 +7,18 @@ import Bookmarked from './component/Bookmarked/Bookmarked';
 
 function App() {
   const [blogs, setBlogs] = useState([]);
+  const [bookmark, setBookmark] = useState([]);
   useEffect(()=>{
     fetch("data.json")
     .then(res => res.json())
     .then(data => setBlogs(data))
   },[])
+//  handler for bookmarked
+  const handleForBookmarked = (blog) =>{
+    const newBookmark = [...bookmark, blog];
+    setBookmark(newBookmark);
+
+}
 
   return (
     <div className="App">
@@ -22,12 +29,12 @@ function App() {
       <div className="container">
         <div className="blog">
           {
-            blogs.map(blog=> <Blog blog={blog} key={blog.id}></Blog> )
+            blogs.map(blog=> <Blog blog={blog} key={blog.id} handleForBookmarked={handleForBookmarked} ></Blog> )
           }
            
         </div>
         <div className="bookmark">
-           <Bookmarked></Bookmarked>
+           <Bookmarked  bookmark={bookmark}></Bookmarked>
         </div>
       </div>
       </div>
