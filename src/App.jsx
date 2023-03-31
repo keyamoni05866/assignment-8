@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './component/Header/Header'
 import Blog from './component/Blog/Blog';
 import Bookmarked from './component/Bookmarked/Bookmarked';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const [blogs, setBlogs] = useState([]);
   const [bookmark, setBookmark] = useState([]);
@@ -15,8 +16,14 @@ function App() {
   },[])
 //  handler for bookmarked
   const handleForBookmarked = (blog) =>{
-    const newBookmark = [...bookmark, blog];
-    setBookmark(newBookmark);
+    const addedBook = bookmark.find (item => item.id === blog.id);
+    if(!addedBook){
+      const newBookmark = [...bookmark, blog];
+      setBookmark(newBookmark);
+    }
+    else{
+      toast("You Have Already Bookmarked This Blog!");
+    }
 
 }
 
@@ -34,10 +41,12 @@ function App() {
            
         </div>
         <div className="bookmark">
-           <Bookmarked  bookmark={bookmark}></Bookmarked>
+           <Bookmarked  bookmark={bookmark} key={bookmark.id}></Bookmarked>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
       </div>
+
     </div>
   )
 }
