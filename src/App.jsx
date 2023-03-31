@@ -22,7 +22,7 @@ function App() {
       <div className="container">
         <div className="blog">
           {
-            blogs.map(blog=> <Blog blog={blog}></Blog> )
+            blogs.map(blog=> <Blog blog={blog} key={blog.id}></Blog> )
           }
            
         </div>

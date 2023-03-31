@@ -1,0 +1,19 @@
+/* .sidebar{
+    position: static;
+    top: 0;
+} */
+
+.time{
+    background: rgba(96, 71, 236, 0.1);
+    border: 1px solid #6047EC;
+    border-radius: 8px;
+    color: #6047EC;
+    padding: 20px;
+}
+
+.bookmarked{
+    margin: 25px;
+    background:  rgba(17, 17, 17, 0.05);
+    border-radius: 8px;
+    padding: 16px;
+}
