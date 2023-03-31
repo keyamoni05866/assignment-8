@@ -19,7 +19,7 @@ const Blog = (props) => {
                     </div>
                     <div className="ms-4" >
                     <h2 className="fs-4 mb-0">{authorName}</h2>
-                    <p className="fs-6 ">March (4 days ago)</p>
+                    <p className="fs-6 ">{publishDate}</p>
                     </div>
                     </div>
                     <div className="read-time m-3">
