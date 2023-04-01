@@ -5,8 +5,9 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 const Blog = (props) => {
 
     const {title, authorName,coverImage,authorImage, publishDate,readTime} = props.blog
+   
    const handleForBookmarked = props.handleForBookmarked;
-   const handleforTime = props.handleforTime;
+   const handleForTime = props.handleForTime;
 
 
  
@@ -38,7 +39,7 @@ const Blog = (props) => {
                 </div>
                <div className="m-2">
                <a href="#" 
-               onClick={ () => handleforTime(props.blog)}
+               onClick={() => handleForTime(readTime)}
                >Mark as read</a>
                </div>
             </div>
