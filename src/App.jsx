@@ -6,9 +6,12 @@ import Blog from './component/Blog/Blog';
 import Bookmarked from './component/Bookmarked/Bookmarked';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Answer from './component/Question-Answer/Answer';
 function App() {
   const [blogs, setBlogs] = useState([]);
   const [bookmark, setBookmark] = useState([]);
+  const [addTime, setAddTime] = useState(0)
+  
   useEffect(()=>{
     fetch("data.json")
     .then(res => res.json())
@@ -26,7 +29,10 @@ function App() {
     }
 
 }
-
+ const handleforTime =(time) =>{
+       const newAddTime = +time + addTime;
+       setAddTime(newAddTime);
+ }
   return (
     <div className="App">
        <div className="header  m-auto mb-3 ">
@@ -36,14 +42,21 @@ function App() {
       <div className="container">
         <div className="blog">
           {
-            blogs.map(blog=> <Blog blog={blog} key={blog.id} handleForBookmarked={handleForBookmarked} ></Blog> )
+            blogs.map(blog=> <Blog blog={blog} key={blog.id} 
+              handleForBookmarked={handleForBookmarked}  
+              handleforTime={handleforTime}
+              ></Blog> )
           }
            
         </div>
         <div className="bookmark">
-           <Bookmarked  bookmark={bookmark} key={bookmark.id}></Bookmarked>
+           <Bookmarked  bookmark={bookmark} addTime={addTime} key={bookmark.id} ></Bookmarked>
         </div>
+        <div className="Answer-container">
+      <Answer></Answer>
       </div>
+      </div>
+     
       <ToastContainer></ToastContainer>
       </div>
 
